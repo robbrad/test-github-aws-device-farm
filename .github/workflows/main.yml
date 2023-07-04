@@ -6,6 +6,9 @@ jobs:
     name: A job to test a website using device farm
     steps:
       - uses: actions/checkout@v3
+      - name: list dir
+        id: listdir
+        run: ls -lrta
       - name: Test the website
         id: test
         uses: robbrad/github-aws-device-farm@1.0.17
