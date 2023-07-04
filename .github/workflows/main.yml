@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: list dir
         id: listdir
-        run: ls -lrta
+        run: ls -lrta ../
       - name: Test the website
         id: test
         uses: robbrad/github-aws-device-farm@1.0.17
