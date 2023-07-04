@@ -45,7 +45,7 @@ exports.config = {
             console.log(specs);
             // Emit the session ID event
             console.log('Session ID:', sessionId);
-            const outputFile = `./sessions.log`;
+            const outputFile = `${process.cwd()}/sessions.log`;
             fs.appendFile(outputFile, `${specFilename}:${sessionId}\n`, function (err) {
                 if (err) throw err;
                 console.log('Session info Saved to sessions.log');
