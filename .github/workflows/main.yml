@@ -9,6 +9,10 @@ jobs:
       - name: list dir
         id: listdir
         run: ls -lrta
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install wdio-aws-device-farm-service
       - name: Test the website
         id: test
         uses: robbrad/github-aws-device-farm@1.0.17
