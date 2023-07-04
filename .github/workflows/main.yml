@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Test the website
         id: test
-        uses: https://github.com/robbrad/github-aws-device-farm@1.0.17
+        uses: robbrad/github-aws-device-farm@1.0.17
         with:
           projectArn: 'arn:aws:devicefarm:us-west-2:193011534336:testgrid-project:68986e87-554c-4e4f-8e7c-e784137e1c6b'
           wdioConfigLocation: 'specs/wdio.conf.js'
