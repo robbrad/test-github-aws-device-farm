@@ -19,5 +19,8 @@ jobs:
         with:
           projectArn: 'arn:aws:devicefarm:us-west-2:193011534336:testgrid-project:68986e87-554c-4e4f-8e7c-e784137e1c6b'
           wdioConfigLocation: 'specs/wdio.conf.js'
-          
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+
       # Use the output from the `hello` step
