@@ -1,6 +1,6 @@
 "use strict";
 const path = require('path');
-const { launcher } = require('../dist/wdio-aws-device-farm-service')
+const { launcher } = require('wdio-aws-device-farm-service')
 
 const fs = require('fs');
 
