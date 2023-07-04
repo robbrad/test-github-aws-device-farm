@@ -43,7 +43,7 @@ exports.config = {
             const extension = path.extname(specPath);
             const specFilename = path.basename(specPath,extension);
             console.log(specs);
-            // Emit the session ID event
+            // Emit the session ID
             console.log('Session ID:', sessionId);
             //const outputFile = `/tmp/sessions.log`;
             //fs.appendFile(outputFile, `${specFilename}:${sessionId}\n`, function (err) {
