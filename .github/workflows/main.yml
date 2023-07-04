@@ -1,0 +1,28 @@
+on: [push]
+
+jobs:
+  test_website:
+    runs-on: ubuntu-latest
+    name: A job to test a website using device farm
+    steps:
+      - uses: actions/checkout@v3
+      - name: list dir
+        id: listdir
+        run: ls -lrta
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install wdio-aws-device-farm-service webdriverio
+      - name: Test the website
+        id: test
+        uses: robbrad/github-aws-device-farm@1.0.17
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        with:
+          projectArn: 'arn:aws:devicefarm:us-west-2:193011534336:testgrid-project:68986e87-554c-4e4f-8e7c-e784137e1c6b'
+          wdioConfigLocation: 'specs/wdio.conf.js'
+
+
+      # Use the output from the `hello` step
