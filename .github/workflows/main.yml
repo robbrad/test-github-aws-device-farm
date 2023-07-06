@@ -28,5 +28,5 @@ jobs:
         id: test
         uses: robbrad/github-aws-device-farm@1.0.34
         with:
-          projectArn: 'arn:aws:devicefarm:us-west-2:707487368203:testgrid-project:f8afe64a-bb0f-4696-8619-7c063729f4c2'
+          #projectArn: 'arn:aws:devicefarm:us-west-2:707487368203:testgrid-project:f8afe64a-bb0f-4696-8619-7c063729f4c2'
           wdioConfigLocation: 'specs/wdio.conf.js'
