@@ -15,9 +15,6 @@ jobs:
           role-to-assume: arn:aws:iam::707487368203:role/gh-action-devicefarm #change to reflect your IAM role’s ARN
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: us-west-2
-      - name: list dir
-        id: listdir
-        run: ls -lrta
       - uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -28,3 +25,8 @@ jobs:
         with:
           projectArn: 'arn:aws:devicefarm:us-west-2:707487368203:testgrid-project:40391256-c443-4ea5-a743-7e86709c0886'
           wdioConfigLocation: 'specs/wdio.conf.js'
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-videos
+          path: videos
