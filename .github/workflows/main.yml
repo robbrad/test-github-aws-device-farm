@@ -26,7 +26,7 @@ jobs:
       - run: npm install wdio-aws-device-farm-service webdriverio
       - name: Test the website
         id: test
-        uses: robbrad/github-aws-device-farm@1.0.39
+        uses: robbrad/github-aws-device-farm@1.0.40
         with:
           ##projectArn: 'arn:aws:devicefarm:us-west-2:707487368203:testgrid-project:f8afe64a-bb0f-4696-8619-7c063729f4c2'
           wdioConfigLocation: 'specs/wdio.conf.js'
