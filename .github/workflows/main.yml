@@ -1,11 +1,22 @@
 on: [push]
-
+env:
+  AWS_REGION : "us-east-1"
+# Permission can be added at job level or workflow level    
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
 jobs:
   test_website:
     runs-on: ubuntu-latest
     name: A job to test a website using device farm
     steps:
       - uses: actions/checkout@v3
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          role-to-assume: arn:aws:iam::707487368203:role/gh-action-devicefarm #change to reflect your IAM role’s ARN
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: ${{ env.AWS_REGION }}
       - name: list dir
         id: listdir
         run: ls -lrta
@@ -16,13 +27,6 @@ jobs:
       - name: Test the website
         id: test
         uses: robbrad/github-aws-device-farm@1.0.20
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         with:
           projectArn: 'arn:aws:devicefarm:us-west-2:193011534336:testgrid-project:68986e87-554c-4e4f-8e7c-e784137e1c6b'
           wdioConfigLocation: 'specs/wdio.conf.js'
-
-
-      # Use the output from the `hello` step
