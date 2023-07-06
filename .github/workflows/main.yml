@@ -16,7 +16,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::707487368203:role/gh-action-devicefarm #change to reflect your IAM role’s ARN
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: us-west-2
       - name: list dir
         id: listdir
         run: ls -lrta
